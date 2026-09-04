@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import api from "../services/api";
 import LaptopCard from "../components/LaptopCard";
+import { isAdmin } from "../services/auth";
 
 function Laptops() {
   const [laptops, setLaptops] = useState([]);
@@ -9,6 +10,7 @@ function Laptops() {
   const [category, setCategory] = useState("All");
   const [budget, setBudget] = useState("All");
   const [sort, setSort] = useState("");
+  const admin = isAdmin();
 
   useEffect(() => {
     getLaptops();
@@ -112,9 +114,11 @@ function Laptops() {
             <div className="laptop-count">
               ⚡ {filteredAndSortedLaptops.length} of {laptops.length} Units
             </div>
-            <Link to="/add-laptop" className="laptop-add-btn">
-              + Add Machine
-            </Link>
+            {admin && (
+              <Link to="/add-laptop" className="laptop-add-btn">
+                + Add Machine
+              </Link>
+            )}
           </div>
         </div>
 

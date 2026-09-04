@@ -10,6 +10,8 @@ import Register from "../pages/Register";
 import Login from "../pages/Login";
 import Logout from "../pages/Logout";
 import ProtectedRoute from "./ProtectedRoute";
+import Payment from "../pages/Payment";
+import AdminSales from "../pages/AdminSales";
 
 function AppRoutes() {
   return (
@@ -28,7 +30,7 @@ function AppRoutes() {
       <Route
         path="/add-laptop"
         element={
-          <ProtectedRoute>
+          <ProtectedRoute adminOnly>
             <AddLaptop />
           </ProtectedRoute>
         }
@@ -37,8 +39,26 @@ function AppRoutes() {
       <Route
         path="/edit-laptop/:id"
         element={
-          <ProtectedRoute>
+          <ProtectedRoute adminOnly>
             <EditLaptop />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/payment/:id"
+        element={
+          <ProtectedRoute>
+            <Payment />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/admin/sales"
+        element={
+          <ProtectedRoute adminOnly>
+            <AdminSales />
           </ProtectedRoute>
         }
       />

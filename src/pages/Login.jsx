@@ -1,6 +1,7 @@
 ﻿import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import api from "../services/api";
+import { isAdminCredentials } from "../services/auth";
 
 function Login() {
   const navigate = useNavigate();
@@ -14,13 +15,23 @@ function Login() {
     setError("");
 
     try {
-      const response = await api.get("/users");
-      const users = Array.isArray(response.data) ? response.data : [];
-      const matchedUser = users.find(
-        (user) =>
-          String(user.email || "").toLowerCase() === email.trim().toLowerCase() &&
-          String(user.password || "") === password
-      );
+      let matchedUser = null;
+
+      if (isAdminCredentials(email, password)) {
+        matchedUser = {
+          name: "Sam",
+          email: "samram5626@gmail.com",
+          isAdmin: true
+        };
+      } else {
+        const response = await api.get("/users");
+        const users = Array.isArray(response.data) ? response.data : [];
+        matchedUser = users.find(
+          (user) =>
+            String(user.email || "").toLowerCase() === email.trim().toLowerCase() &&
+            String(user.password || "") === password
+        );
+      }
 
       if (matchedUser) {
         localStorage.setItem("user", JSON.stringify(matchedUser));

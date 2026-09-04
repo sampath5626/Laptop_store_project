@@ -1,8 +1,10 @@
 ﻿import { NavLink, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { getCurrentUser, isAdmin } from "../services/auth";
 
 function Navbar() {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = getCurrentUser();
+  const admin = isAdmin(user);
   const favorites = useSelector((state) => state.favorites);
 
   return (
@@ -52,9 +54,16 @@ function Navbar() {
               👤 <strong className="user-name">{user.name}</strong>
             </span>
 
-            <Link to="/add-laptop" className="nav-add-btn">
-              + Add Laptop
-            </Link>
+            {admin && (
+              <>
+                <Link to="/add-laptop" className="nav-add-btn">
+                  + Add Laptop
+                </Link>
+                <Link to="/admin/sales" className="nav-sales-btn">
+                  Sales
+                </Link>
+              </>
+            )}
 
             <Link to="/logout" className="nav-logout-btn">
               Logout

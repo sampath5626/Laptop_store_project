@@ -1,24 +1,26 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import api from "../services/api";
+import { isAdmin } from "../services/auth";
 
 function LaptopDetails() {
   const { id } = useParams();
   const [laptop, setLaptop] = useState(null);
+  const admin = isAdmin();
   const fallbackImg = "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1000&q=80";
 
   useEffect(() => {
-    getLaptop();
-  }, [id]);
-
-  async function getLaptop() {
-    try {
-      const response = await api.get(`/laptops/${id}`);
-      setLaptop(response.data);
-    } catch (error) {
-      console.log("Error fetching laptop details:", error);
+    async function loadLaptop() {
+      try {
+        const response = await api.get(`/laptops/${id}`);
+        setLaptop(response.data);
+      } catch (error) {
+        console.log("Error fetching laptop details:", error);
+      }
     }
-  }
+
+    loadLaptop();
+  }, [id]);
 
   if (!laptop) {
     return (
@@ -108,9 +110,15 @@ function LaptopDetails() {
               ← Back to Laptops
             </Link>
 
-            <Link to={`/edit-laptop/${laptop.id}`} className="edit-details-btn">
-              ✏️ Edit Laptop
+            <Link to={`/payment/${laptop.id}`} className="buy-now-btn">
+              Buy Now
             </Link>
+
+            {admin && (
+              <Link to={`/edit-laptop/${laptop.id}`} className="edit-details-btn">
+                ✏️ Edit Laptop
+              </Link>
+            )}
           </div>
         </div>
       </section>

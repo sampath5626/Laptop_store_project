@@ -1,11 +1,13 @@
 ﻿import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, removeFavorite } from "../features/favoriteSlice";
+import { isAdmin } from "../services/auth";
 
 function LaptopCard({ laptop, onDelete }) {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites);
   const isFavorite = favorites.some((item) => item.id === laptop.id);
+  const admin = isAdmin();
 
   const fallbackImg =
     "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=800&q=80";
@@ -69,16 +71,20 @@ function LaptopCard({ laptop, onDelete }) {
           View Details
         </Link>
 
-        <Link className="edit-btn" to={`/edit-laptop/${laptop.id}`}>
-          Edit
-        </Link>
+        {admin && (
+          <>
+            <Link className="edit-btn" to={`/edit-laptop/${laptop.id}`}>
+              Edit
+            </Link>
 
-        <button
-          className="delete-btn"
-          onClick={() => onDelete(laptop.id)}
-        >
-          Delete
-        </button>
+            <button
+              className="delete-btn"
+              onClick={() => onDelete(laptop.id)}
+            >
+              Delete
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
