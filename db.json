@@ -495,5 +495,107 @@
       "id": "L5gIhoZ6C3k"
     }
   ],
+  "sales": [
+    {
+      "id": "sale-1001",
+      "laptopId": "NKLc_0Ki3Yc",
+      "laptopName": "MacBook Pro 16 M3 Max",
+      "amount": 349900,
+      "customerName": "Aarav Mehta",
+      "customerEmail": "aarav.mehta@example.com",
+      "paymentStatus": "Paid",
+      "purchasedAt": "2026-08-29T10:24:00.000Z"
+    },
+    {
+      "id": "sale-1002",
+      "laptopId": "Uv9Umyit9NQ",
+      "laptopName": "Lenovo IdeaPad Pro 5",
+      "amount": 104990,
+      "customerName": "Diya Nair",
+      "customerEmail": "diya.nair@example.com",
+      "paymentStatus": "Paid",
+      "purchasedAt": "2026-08-30T13:42:00.000Z"
+    },
+    {
+      "id": "sale-1003",
+      "laptopId": "h0v0632ToPg",
+      "laptopName": "ROG Strix SCAR 18",
+      "amount": 399990,
+      "customerName": "Kabir Shah",
+      "customerEmail": "kabir.shah@example.com",
+      "paymentStatus": "Paid",
+      "purchasedAt": "2026-08-31T09:15:00.000Z"
+    },
+    {
+      "id": "sale-1004",
+      "laptopId": "GrckW1sLpXg",
+      "laptopName": "MacBook Air 15 M3",
+      "amount": 154900,
+      "customerName": "Mira Kapoor",
+      "customerEmail": "mira.kapoor@example.com",
+      "paymentStatus": "Paid",
+      "purchasedAt": "2026-09-01T16:08:00.000Z"
+    },
+    {
+      "id": "sale-1005",
+      "laptopId": "rG4mCJlZDSA",
+      "laptopName": "Lenovo Legion Pro 7i",
+      "amount": 249990,
+      "customerName": "Rohan Iyer",
+      "customerEmail": "rohan.iyer@example.com",
+      "paymentStatus": "Paid",
+      "purchasedAt": "2026-09-01T18:27:00.000Z"
+    },
+    {
+      "id": "sale-1006",
+      "laptopId": "uTnzpXYxvv4",
+      "laptopName": "Razer Blade 16 OLED",
+      "amount": 329999,
+      "customerName": "Ananya Rao",
+      "customerEmail": "ananya.rao@example.com",
+      "paymentStatus": "Paid",
+      "purchasedAt": "2026-09-02T11:36:00.000Z"
+    },
+    {
+      "id": "sale-1007",
+      "laptopId": "Uv9Umyit9NQ",
+      "laptopName": "Lenovo IdeaPad Pro 5",
+      "amount": 104990,
+      "customerName": "Vikram Joshi",
+      "customerEmail": "vikram.joshi@example.com",
+      "paymentStatus": "Paid",
+      "purchasedAt": "2026-09-03T08:51:00.000Z"
+    },
+    {
+      "id": "sale-1008",
+      "laptopId": "n8jOPAl7t_w",
+      "laptopName": "Dell XPS 16 (2026)",
+      "amount": 289900,
+      "customerName": "Sara Thomas",
+      "customerEmail": "sara.thomas@example.com",
+      "paymentStatus": "Paid",
+      "purchasedAt": "2026-09-03T14:19:00.000Z"
+    },
+    {
+      "id": "sale-1009",
+      "laptopId": "NKLc_0Ki3Yc",
+      "laptopName": "MacBook Pro 16 M3 Max",
+      "amount": 349900,
+      "customerName": "Neel Malhotra",
+      "customerEmail": "neel.malhotra@example.com",
+      "paymentStatus": "Paid",
+      "purchasedAt": "2026-09-04T07:43:00.000Z"
+    },
+    {
+      "id": "sale-1010",
+      "laptopId": "kZ0oZB23iKg",
+      "laptopName": "HP Spectre x360 16",
+      "amount": 189990,
+      "customerName": "Ishita Sen",
+      "customerEmail": "ishita.sen@example.com",
+      "paymentStatus": "Paid",
+      "purchasedAt": "2026-09-04T12:05:00.000Z"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }
