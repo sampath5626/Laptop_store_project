@@ -30,12 +30,20 @@ function Navbar() {
         </NavLink>
 
         {user && !admin && (
-          <NavLink
-            to="/favorites"
-            className={({ isActive }) => (isActive ? "active nav-fav-link" : "nav-fav-link")}
-          >
-            Favorites <span className="fav-counter-badge">{favorites.length}</span>
-          </NavLink>
+          <>
+            <NavLink
+              to="/favorites"
+              className={({ isActive }) => (isActive ? "active nav-fav-link" : "nav-fav-link")}
+            >
+              Favorites <span className="fav-counter-badge">{favorites.length}</span>
+            </NavLink>
+            <NavLink
+              to="/orders"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Orders
+            </NavLink>
+          </>
         )}
 
         {!user ? (

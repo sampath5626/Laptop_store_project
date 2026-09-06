@@ -12,6 +12,7 @@ import Logout from "../pages/Logout";
 import ProtectedRoute from "./ProtectedRoute";
 import Payment from "../pages/Payment";
 import AdminSales from "../pages/AdminSales";
+import OrderHistory from "../pages/OrderHistory";
 
 function AppRoutes() {
   return (
@@ -24,6 +25,14 @@ function AppRoutes() {
         element={
           <ProtectedRoute>
             <Favorites />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/orders"
+        element={
+          <ProtectedRoute>
+            <OrderHistory />
           </ProtectedRoute>
         }
       />
