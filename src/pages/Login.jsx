@@ -36,7 +36,6 @@ function Login() {
       if (matchedUser) {
         localStorage.setItem("user", JSON.stringify(matchedUser));
         navigate("/");
-        window.location.reload();
       } else {
         setError("Invalid email or password");
       }

@@ -1,8 +1,9 @@
-﻿import { NavLink, Link } from "react-router-dom";
+﻿import { NavLink, Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getCurrentUser, isAdmin } from "../services/auth";
 
 function Navbar() {
+  useLocation();
   const user = getCurrentUser();
   const admin = isAdmin(user);
   const favorites = useSelector((state) => state.favorites);
