@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import api from "../services/api";
-import { isAdmin } from "../services/auth";
+import { getCurrentUser, isAdmin } from "../services/auth";
 
 function LaptopDetails() {
   const { id } = useParams();
   const [laptop, setLaptop] = useState(null);
-  const admin = isAdmin();
+  const user = getCurrentUser();
+  const admin = isAdmin(user);
   const fallbackImg = "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1000&q=80";
 
   useEffect(() => {
@@ -110,9 +111,11 @@ function LaptopDetails() {
               ← Back to Laptops
             </Link>
 
-            <Link to={`/payment/${laptop.id}`} className="buy-now-btn">
-              Buy Now
-            </Link>
+            {user && !admin && (
+              <Link to={`/payment/${laptop.id}`} className="buy-now-btn">
+                Buy Now
+              </Link>
+            )}
 
             {admin && (
               <Link to={`/edit-laptop/${laptop.id}`} className="edit-details-btn">

@@ -29,12 +29,14 @@ function Navbar() {
           Laptops
         </NavLink>
 
-        <NavLink 
-          to="/favorites" 
-          className={({ isActive }) => (isActive ? "active nav-fav-link" : "nav-fav-link")}
-        >
-          Favorites <span className="fav-counter-badge">{favorites.length}</span>
-        </NavLink>
+        {user && !admin && (
+          <NavLink
+            to="/favorites"
+            className={({ isActive }) => (isActive ? "active nav-fav-link" : "nav-fav-link")}
+          >
+            Favorites <span className="fav-counter-badge">{favorites.length}</span>
+          </NavLink>
+        )}
 
         {!user ? (
           <>

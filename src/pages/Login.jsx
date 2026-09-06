@@ -1,10 +1,13 @@
 ﻿import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import api from "../services/api";
 import { isAdminCredentials } from "../services/auth";
+import { loadFavorites } from "../features/favoriteSlice";
 
 function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,6 +38,7 @@ function Login() {
 
       if (matchedUser) {
         localStorage.setItem("user", JSON.stringify(matchedUser));
+        dispatch(loadFavorites());
         navigate("/");
       } else {
         setError("Invalid email or password");

@@ -1,12 +1,13 @@
 ﻿import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, removeFavorite } from "../features/favoriteSlice";
-import { isAdmin } from "../services/auth";
+import { getCurrentUser, isAdmin } from "../services/auth";
 
 function LaptopCard({ laptop, onDelete }) {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites);
   const isFavorite = favorites.some((item) => item.id === laptop.id);
+  const user = getCurrentUser();
   const admin = isAdmin();
 
   const fallbackImg =
@@ -58,12 +59,14 @@ function LaptopCard({ laptop, onDelete }) {
           </span>
         </div>
 
-        <button
-          className={`favorite-toggle-btn ${isFavorite ? "active" : ""}`}
-          onClick={handleFavoriteToggle}
-        >
-          {isFavorite ? "💖 In Favorites" : "🤍 Add To Favorites"}
-        </button>
+        {user && !admin && (
+          <button
+            className={`favorite-toggle-btn ${isFavorite ? "active" : ""}`}
+            onClick={handleFavoriteToggle}
+          >
+            {isFavorite ? "💖 In Favorites" : "🤍 Add To Favorites"}
+          </button>
+        )}
       </div>
 
       <div className="card-actions">

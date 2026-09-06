@@ -12,6 +12,10 @@ function ProtectedRoute({ children, adminOnly = false }) {
     return <Navigate to="/laptops" replace />;
   }
 
+  if (!adminOnly && isAdmin(user)) {
+    return <Navigate to="/laptops" replace />;
+  }
+
   return children;
 }
 

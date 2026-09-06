@@ -19,7 +19,14 @@ function AppRoutes() {
       <Route path="/" element={<Home />} />
       <Route path="/laptops" element={<Laptops />} />
       <Route path="/laptops/:id" element={<LaptopDetails />} />
-      <Route path="/favorites" element={<Favorites />} />
+      <Route
+        path="/favorites"
+        element={
+          <ProtectedRoute>
+            <Favorites />
+          </ProtectedRoute>
+        }
+      />
 
       {/* Auth Routes */}
       <Route path="/register" element={<Register />} />
